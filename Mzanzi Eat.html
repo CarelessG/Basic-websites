@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mzanzi_Eat - Gourmet Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+    body { background-color: #fff; color: #000; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; width: 100%; background: #000; color: #fff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+    }
+    nav h1 { font-style: italic; font-weight: 700; color: #ff0000; }
+    nav ul { display: flex; list-style: none; gap: 25px; }
+    nav ul li a { color: #fff; transition: color 0.3s; }
+    nav ul li a:hover { color: #ff0000; }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; color: #fff; position: relative;
+    }
+    .hero::after {
+      content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+    }
+    .hero h2 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.3rem; margin-bottom: 30px; }
+    .hero button {
+      padding: 12px 30px; background: #ff0000; color: #fff; border: none; cursor: pointer; font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    .hero button:hover { transform: scale(1.1); }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 80px 50px; }
+
+    h2.section-title { text-align: center; font-size: 2.5rem; color: #ff0000; margin-bottom: 50px; }
+
+    /* ===== MENU SECTION ===== */
+    .menu-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 30px; }
+    .menu-item { border: 1px solid #ddd; padding: 20px; text-align: center; transition: transform 0.3s; }
+    .menu-item img { width: 100%; height: 180px; object-fit: cover; margin-bottom: 15px; }
+    .menu-item:hover { transform: translateY(-10px); }
+    .menu-item h3 { color: #000; margin-bottom: 10px; }
+    .menu-item p { color: #555; margin-bottom: 10px; }
+    .menu-item span { font-weight: bold; color: #ff0000; }
+
+    /* ===== ABOUT SECTION ===== */
+    .about { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+    .about img { flex: 1; max-width: 400px; border-radius: 10px; }
+    .about-text { flex: 2; }
+    .about-text p { margin-bottom: 20px; line-height: 1.6; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 30px; }
+    .testimonial { background: #000; color: #fff; padding: 20px; border-radius: 10px; transition: transform 0.3s; }
+    .testimonial:hover { transform: translateY(-5px); }
+    .testimonial p { margin-bottom: 10px; font-style: italic; }
+    .testimonial h4 { font-weight: 700; }
+
+    /* ===== RESERVATION FORM ===== */
+    .reservation form { display: grid; gap: 15px; max-width: 500px; margin: 0 auto; }
+    .reservation input, .reservation textarea, .reservation button { padding: 12px; border: 1px solid #ddd; border-radius: 5px; width: 100%; }
+    .reservation button { background: #ff0000; color: #fff; border: none; cursor: pointer; transition: transform 0.3s; }
+    .reservation button:hover { transform: scale(1.05); }
+
+    /* ===== FOOTER ===== */
+    footer { background: #000; color: #fff; text-align: center; padding: 30px 50px; }
+    footer a { color: #ff0000; margin: 0 10px; transition: color 0.3s; }
+    footer a:hover { color: #fff; }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>Mzanzi_Eat</h1>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#reservation">Reserve</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome to Mzanzi_Eat</h2>
+      <p>Experience gourmet food like never before</p>
+      <button onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Book a Table</button>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <h2 class="section-title fade-in">Our Menu</h2>
+    <div class="menu-items fade-in">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Dish 1">
+        <h3>Grilled Steak</h3>
+        <p>Succulent grilled steak with herbs</p>
+        <span>R250</span>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb35?auto=format&fit=crop&w=400&q=80" alt="Dish 2">
+        <h3>Seafood Platter</h3>
+        <p>Fresh seafood with lemon butter sauce</p>
+        <span>R300</span>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1617196030726-2897b6c77d30?auto=format&fit=crop&w=400&q=80" alt="Dish 3">
+        <h3>Vegetarian Pasta</h3>
+        <p>Delicious pasta with seasonal veggies</p>
+        <span>R180</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title fade-in">About the Chef</h2>
+    <div class="about fade-in">
+      <img src="https://images.unsplash.com/photo-1600880292089-90b63b7f7f10?auto=format&fit=crop&w=400&q=80" alt="Chef">
+      <div class="about-text">
+        <p>Chef Sipho has over 15 years of culinary experience, creating gourmet dishes with passion and precision. At Mzanzi_Eat, every meal is crafted to give you an unforgettable dining experience.</p>
+        <p>Our philosophy is simple: fresh ingredients, bold flavors, and top-notch service.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <h2 class="section-title fade-in">What Our Customers Say</h2>
+    <div class="testimonials fade-in">
+      <div class="testimonial">
+        <p>"Absolutely amazing! The steak was cooked to perfection."</p>
+        <h4>- Thabo M.</h4>
+      </div>
+      <div class="testimonial">
+        <p>"A beautiful dining experience with top-quality service."</p>
+        <h4>- Lerato P.</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Best gourmet seafood in town. Highly recommended!"</p>
+        <h4>- Nomsa K.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION FORM -->
+  <section id="reservation">
+    <h2 class="section-title fade-in">Reserve Your Table</h2>
+    <div class="reservation fade-in">
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone" required>
+        <input type="date" required>
+        <input type="time" required>
+        <textarea placeholder="Special Requests" rows="4"></textarea>
+        <button type="submit">Book Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Mzanzi_Eat. All Rights Reserved.</p>
+    <div>
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <!-- ===== JS FOR FADE-IN ANIMATIONS ===== -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.3 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+</body>
+</html>
